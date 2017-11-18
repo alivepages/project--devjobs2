@@ -3,12 +3,12 @@ const pageRouter = Router();
 
 pageRouter
   .get('/', (req, res) => {
-    res.send('<h1>HOME page</h1>')
+    res.render('home')
   });
 
 pageRouter
   .get('/about', (req, res) => {
-    res.send('<h1>ABOUT page</h1>')
-  });
+    res.render('about')
+});
 
 module.exports = pageRouter;
