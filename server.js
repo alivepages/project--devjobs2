@@ -4,7 +4,12 @@ const ejs = require('ejs');
 const pageRouter = require('./src/routers/pageRouter.js');
 const apiRouter = require('./src/routers/apiRouter.js');
 
+const connectToDb = require('./src/database/dbConnect.js');
+const dbConfigObj = require('./knexfile.js');
+
 const app = express();
+const appDb = connectToDb(dbConfigObj.development);
+app.locals.db = appDb;
 
 const PATH = `${__dirname}/src/views/home.html`;
 
