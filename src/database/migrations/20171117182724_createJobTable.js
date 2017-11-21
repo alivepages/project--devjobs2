@@ -9,7 +9,6 @@ exports.up = function(knex, Promise) {
       table.string('location');
       table.decimal('salary', 14, 2);
       table.boolean('fullTime');
-      table.integer('companyId');
     });
 };
 

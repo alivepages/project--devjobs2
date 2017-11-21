@@ -1,22 +1,22 @@
 const Router = require('express').Router;
 const apiRouter = Router();
+const Job = require('../models/Job.js');
+const Company = require('../models/Company.js');
+
 
 apiRouter
   .get('/jobs', (req, res) => {
-    var db = req.app.locals.db;
-    db
-     .select()
-     .table('job')
-     .then(data => res.json(data));
+    Job
+      .query()
+      .then(data => res.json(data));
   });
 
 apiRouter
   .get('/companies', (req, res) => {
-    var db = req.app.locals.db;
-    db
-     .select()
-     .table('company')
-     .then(data => res.json(data));
+    Company
+      .query()
+      .eager('job')
+      .then(data => res.json(data));
   });
 
 module.exports = apiRouter;

@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs-extra');
 const ejs = require('ejs');
+const { Model } = require('objection');
 const pageRouter = require('./src/routers/pageRouter.js');
 const apiRouter = require('./src/routers/apiRouter.js');
 
@@ -9,6 +10,7 @@ const dbConfigObj = require('./knexfile.js');
 
 const app = express();
 const appDb = connectToDb(dbConfigObj.development);
+Model.knex(appDb);
 app.locals.db = appDb;
 
 const PATH = `${__dirname}/src/views/home.html`;
