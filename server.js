@@ -4,7 +4,7 @@ const ejs = require('ejs');
 const { Model } = require('objection');
 const pageRouter = require('./src/routers/pageRouter.js');
 const apiRouter = require('./src/routers/apiRouter.js');
-
+const bodyParser = require('body-parser');
 const connectToDb = require('./src/database/dbConnect.js');
 const dbConfigObj = require('./knexfile.js');
 
@@ -12,6 +12,8 @@ const app = express();
 const appDb = connectToDb(dbConfigObj.development);
 Model.knex(appDb);
 app.locals.db = appDb;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const PATH = `${__dirname}/src/views/home.html`;
 
