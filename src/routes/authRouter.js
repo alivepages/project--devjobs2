@@ -24,7 +24,7 @@ authRouter
     saveNewUser,
     handleRegisterRes
   )
-  .get('/current', handleCurrentAuthRes)
+  .get('/login', handleCurrentAuthRes)
   .get('/logout', handleLogoutRes)
 
 
